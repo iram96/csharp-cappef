@@ -5,6 +5,38 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 Console.WriteLine("Hello, World!");
 
+static System.Collections.Generic.IEnumerable<int> Power(int number, int exponent)
+{
+    int result = 1;
+
+    for (int i = 0; i < exponent; i++)
+    {
+        result = result * number;
+        yield return result;
+    }
+};
+
+static Func<int> accumul(int number)
+{  //Closure
+    int result = 1;
+
+    return () =>
+    {
+        result = result * number;
+        return result;
+    };
+}
+
+
+
+foreach (var n in Power(2, 16))
+{
+    Console.WriteLine(n);
+}
+
+
+return;
+
 using (SchoolContext db = new SchoolContext())
 {
     // Create
